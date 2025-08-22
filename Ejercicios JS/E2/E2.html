@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E2-JS</title>
+</head>
+<body>
+    <h3>categorias ordenadas</h3>
+    <pre id="categoria1">Arreglo1</pre>
+
+    <pre id="categoria2">Arreglo2</pre>
+    <script>
+        const inventario = [
+            { name: 'doll', quantity: 5, category: 'toys' },
+            { name: 'car', quantity: 3, category: 'toys' },
+            { name: 'ball', quantity: 2, category: 'sports' },
+            { name: 'car', quantity: 2, category: 'toys' },
+            { name: 'racket', quantity: 4, category: 'sports' }
+            ]
+
+            function OrganizarInventario(inventario) {
+                //aqui separamos primero las categorias
+                let juguetes = [];
+                let deportes = [];
+
+                //aqui guardamos los nombres separados en resultados finales
+                let juguetesFinales = [
+                    { name: 'doll', quantity: 0},
+                    { name: 'car', quantity: 0}
+                ];
+
+                //aqui guardamos los nombres separados en resultados finales
+                let deportesFinales = [
+                    { name: 'ball', quantity: 0},
+                    { name: 'racket', quantity: 0}
+                ];
+
+                //recorremos el inventario
+                for (let i = 0; i < inventario.length; i++) {
+                    if(inventario[i].category == 'toys') {
+
+                        //y los vamos agregando al arreglo juguetes
+                        juguetes.push(inventario[i]);
+                    }
+                    else if(inventario[i].category == 'sports') {
+
+                        //guardamos los deportes en otro arreglo
+                        deportes.push(inventario[i]);
+                    } else{
+                        //error
+                    }
+                        
+                }
+
+                //cree dos arreglos mas para guardar los resultados finales
+                for (let i = 0; i < juguetes.length; i++) {
+                   if(juguetes[i].name == 'car') {
+                        juguetesFinales[1].quantity += juguetes[i].quantity;
+                    }
+                    if(juguetes[i].name == 'doll') {
+                        juguetesFinales[0].quantity += juguetes[i].quantity;
+                    }else{
+                        //error
+                    }
+                }
+                
+                for (let i = 0; i < deportes.length; i++) {
+                   if(deportes[i].name == 'ball') {
+                        deportesFinales[0].quantity += deportes[i].quantity;
+                    }
+                    if(deportes[i].name == 'racket') {
+                        deportesFinales[1].quantity += deportes[i].quantity;
+                    }else{
+                        //error
+                    }
+                }
+
+                //comprobamos que los arreglos se hayan llenado correctamente
+                console.log("Juguetes finales:", juguetesFinales);
+                console.log("Deportes finales:", deportesFinales);
+
+
+                //BUSQUE EN INTERNET PARA VER COMO IMPRIMIR ARREGLOS 
+                //Y ENCONTRÉ ESTA FORMA DE USAR JSON.STRINGIFY
+                document.getElementById("categoria1").innerText = JSON.stringify(juguetesFinales, null, 2);
+                document.getElementById("categoria2").innerText = JSON.stringify(deportesFinales, null, 2);
+            }
+
+            OrganizarInventario(inventario);
+
+           
+    </script>
+</body>
+</html>
