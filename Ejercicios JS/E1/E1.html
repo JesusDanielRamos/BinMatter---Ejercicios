@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Empty HTML Page</title>
+</head>
+<style>
+    p, pre{
+        margin: 0;
+    }
+</style>
+<body>
+    <p id="palabraMasLarga"></p>
+
+    <!-- Tras varios iintentos descubri que si no usamos PRE no te respeta los espacios que concatenes en JS 
+        por eso estuve batallando tanto tiempo con los espacios jej estaba usando un P normal
+    -->
+    <pre id="inicio"></pre>
+    <pre id="arregloNombres"></pre>
+    <pre id="fin"></pre>
+
+    <script>
+
+       
+        let nombres = ["Jesus", "Daniel", "Chuy", "Pancracio"];
+        let nombres2 = ["Federico", "Rigoberto", "Chuy", "Gamaliel"];
+
+        function createFrame(nombres){
+            
+            let asterisco = "*";
+            let largoAsteriscosInicio = "";
+            let largoAsteriscosFin = "";
+            //primero calcular la palabra mas larga
+            //nos situamos en la primer palabra del arreglo y la comparamos con las demas 
+            let palabraMasLarga = nombres[0];
+            let salidaFinal = "";
+
+            //para recorrer el arreglo de nombres e irlos comparando hasta encontrar la palabra mas larga
+            for(let i = 1; i < nombres.length; i++){
+                if(nombres[i].length > palabraMasLarga.length){
+                    palabraMasLarga = nombres[i];
+                }
+                 
+            }
+            //explicacion de este for: guardamos la primer palabra en la variable palabraMasLarga
+            //luego recorremos el arreglo desde la segunda palabra porque sino falla
+            //comparamos la longitud de cada palabra con la longitud de la palabra mas larga
+            //si es mayor que la primera lo guardamos en la variable palabraMasLarga sino pasa a la siguiente 
+            // y asi hasta acabar 
+
+
+
+            //una vez conocemos la palabra mas larga, creamos los asteriscos, concatenando la variable y que el molde 
+            //sea la variable asterisco
+            for(let i = 0; i <= palabraMasLarga.length+1; i++){
+                largoAsteriscosInicio    += asterisco;
+                document.getElementById("inicio").innerText = largoAsteriscosInicio;
+            }
+
+            
+
+             for(let i = 0; i < nombres.length; i++){
+                let espacios = palabraMasLarga.length - nombres[i].length;
+                console.log(espacios);
+
+                let marcoFinal = " ".repeat(espacios); // aquí sí se guardan los espacios 
+                salidaFinal += `*${nombres[i]}${marcoFinal}* <br>`;
+
+             }
+            
+             document.getElementById("arregloNombres").innerHTML = salidaFinal;
+
+            //y ahora hacemos el marco de abajo 
+             for(let i = 0; i <= palabraMasLarga.length+1; i++){
+                largoAsteriscosFin += asterisco;
+                document.getElementById("fin").innerText = largoAsteriscosFin;
+
+            }
+
+         
+        } 
+
+        createFrame(nombres);
+        
+    </script>
+</body>
+</html>
