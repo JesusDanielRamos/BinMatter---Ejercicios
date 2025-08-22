@@ -58,12 +58,19 @@
             }
 
             
-
+            //aqui hacemos el marco de los nombres
+            //recorremos el arreglo de nombres y vamos calculando los espacios que faltan para
+            //que cada palabra tenga la misma longitud que la palabra mas larga
+            //y los guardamos en la variable espacios
+            //luego usamos repeat para repetir los espacios que faltan y los guardamos en la variable marcoFinal
+            //y finalmente concatenamos todo en salidaFinal
              for(let i = 0; i < nombres.length; i++){
                 let espacios = palabraMasLarga.length - nombres[i].length;
                 console.log(espacios);
 
+                //investigando un poco vi el metodo reeat para repetir caracteres o strings
                 let marcoFinal = " ".repeat(espacios); // aquí sí se guardan los espacios 
+                //recordando de un curso que vi esta es la forma actual de concatenar variables y caracteres
                 salidaFinal += `*${nombres[i]}${marcoFinal}* <br>`;
 
              }
