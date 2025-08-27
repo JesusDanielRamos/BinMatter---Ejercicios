@@ -18,18 +18,18 @@
              let valores = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
              let simbolos = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
 
-            // let resultado = "";
-            // let i = 0;
+            let resultado = "";
+            let i = 0;
 
-            // while (num > 0) {
-            //     while (num >= valores[i]) {
-            //         resultado += simbolos[i];
-            //         num -= valores[i];
-            //     }
-            //     i++;
-            // }
+            while (num > 0) {
+                while (num >= valores[i]) {
+                        resultado += simbolos[i];
+                        num -= valores[i];
+                    }
+                 i++;
+             }
 
-            // return resultado;
+            return resultado;
         }
 
         toRomance(235);
