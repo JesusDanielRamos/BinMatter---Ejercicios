@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E4</title>
+</head>
+<body>
+    <script>
+        //por lo que veo esto es una matriz, un arreglo de arreglos
+        const projects = [
+            ["TaskManager", "React", "Node", "MongoDB"],
+            ["FoodDelivery", "Node", "Express", "MySQL"],
+            ["Portfolio", "HTML", "CSS", "React"],
+            ["ChatApp", "React", "Firebase", "Node"],
+            ]
+
+            function organizeProjects(projects) {
+                // Crear un objeto para agrupar proyectos por tecnología    
+                const resultado = [];
+
+                // Recorrer cada proyecto o sea cada fila
+                    for (let i = 0; i < projects.length; i++) {
+                        const nombre = projects[i][0];
+                        const techs = projects[i].slice(1);
+
+                        for (let j = 0; j < techs.length; j++) {
+                        const tech = techs[j];
+
+                        // Buscar si ya existe un arreglo para esta tecnología
+                        let grupo = null;
+                        //ciclo para buscar si ya existe un grupo con esa tecnologia
+                        //si existe lo guardamos en la variable grupo.
+                        for (let k = 0; k < resultado.length; k++) {
+                            
+                            if (resultado[k][0] === tech) {
+                            grupo = resultado[k];
+                            break;
+                            }
+                        }
+
+                        // Si existe, agregamos el proyecto; si no, creamos un nuevo grupo
+                        if (grupo) {
+                            grupo.push(nombre);
+                        } else {
+                            resultado.push([tech, nombre]);
+                        }
+                        }
+                    }
+
+                    // Filtrar solo las tecnologías con al menos 2 proyectos
+                    //en un nuevo arreglo, crearwo un filtro que regrese solo los grupos con
+                     // Nueva lista que solo guarde tecnologías con al menos 2 proyectos
+                            let filtrados = [];
+                            for (let i = 0; i < resultado.length; i++) {
+                                if (resultado[i].length >= 3) { 
+                                    filtrados.push(resultado[i]);
+                                }
+                            }
+                        
+                        console.log(filtrados);
+                    }
+
+
+            organizeProjects(projects);
+            //console.log(organizeProjects(projects));
+    </script>
+</body>
+</html>
