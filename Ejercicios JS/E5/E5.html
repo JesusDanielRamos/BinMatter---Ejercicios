@@ -12,30 +12,11 @@
             if (num < 1 || num > 3999) {
                 return "Número fuera de rango (1-3999)";
             }
-
-            let valores = [
-                1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000
-            ];
-
-            let simbolos = [
-                "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"
-            ];
-
-            let resultado = "";
-
-            while (num > 0) {
-                for (let i = valores.length - 1; i >= 0; i--) {
-                    if (num >= valores[i]) {
-                        resultado += simbolos[i];
-                        num -= valores[i];
-                        break;
-                    }
-                }
-            }
+            
 
 
-            // const valores = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
-            // const simbolos = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+             let valores = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+             let simbolos = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
 
             // let resultado = "";
             // let i = 0;

@@ -8,7 +8,7 @@
 <body>
     <script>
         //por lo que veo esto es una matriz, un arreglo de arreglos
-        const projects = [
+        let projects = [
             ["TaskManager", "React", "Node", "MongoDB"],
             ["FoodDelivery", "Node", "Express", "MySQL"],
             ["Portfolio", "HTML", "CSS", "React"],
@@ -17,7 +17,7 @@
 
             function organizeProjects(projects) {
                 // Crear un objeto para agrupar proyectos por tecnología    
-                const resultado = [];
+                let resultado = [];
 
                 // Recorrer cada proyecto o sea cada fila
                     for (let i = 0; i < projects.length; i++) {
