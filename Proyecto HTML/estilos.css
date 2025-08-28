@@ -14,6 +14,17 @@ body {
   border-radius: 20px;
   box-shadow: 10px 12px 12px rgba(0, 0, 0, 0.1);
 }
+@media (max-width: 768px) {
+  .contenedor {
+    width: 85%;
+  }
+}
+@media (max-width: 425px) {
+  .contenedor {
+    width: 100%;
+    flex-direction: column;
+  }
+}
 
 .Result {
   width: 50%;
@@ -33,6 +44,11 @@ body {
 }
 .Result h2 {
   margin: 15px 0;
+}
+@media (max-width: 425px) {
+  .Result {
+    width: 80%;
+  }
 }
 
 .circulo {
@@ -67,6 +83,17 @@ body {
 .Summary .btn {
   margin-top: 30px;
 }
+@media (max-width: 375px) {
+  .Summary {
+    padding: 2%;
+  }
+}
+@media (max-width: 425px) {
+  .Summary {
+    width: 80%;
+    align-items: center;
+  }
+}
 
 .btn {
   background-color: #2f3c5a;
@@ -76,6 +103,7 @@ body {
   padding: 12px 20px;
   width: 100%;
   height: 12%;
+  margin: 0 auto;
 }
 
 .btn:hover {
