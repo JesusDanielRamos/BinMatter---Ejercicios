@@ -3,40 +3,38 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family:Arial, Helvetica, sans-serif
+    font-family: "Roboto", sans-serif;
 }
 
 
 .contenedor{
+    margin: auto 0;
     display: flex;
     background-color: #ffff;
-    height: 50%;
+
     width: 50%;
     border-radius: 20px;
-    
-    //sombra simple y dura, va hacia abajo y a la derecha
-    //box-shadow: 5px 5px 10px gray;
-
-    //Sombra suave con degradado de color, va hacia abajo y a la derecha
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 12px 12px rgba(0, 0, 0, 0.1);
 }
 
 
 .Result{
     width: 50%;
-    padding: 20px;
-    color: blue;
-    background-color: #6141fe;
+    padding: 5% 10%;
+    
+    background-image: linear-gradient(to bottom, #4e21ca, #2525e2);
     border-radius: 20px;
     text-align: center;
 
+    h1{
+        margin: 0;
+    }
 
-    h1, h2{
+    h2{
     color: white;
-    margin: 0;
     }   
 
-    h3, p{
+    h1, h3, p{
         color: #aca9ba;
     }
 
@@ -44,31 +42,22 @@ body{
         margin: 15px 0;
     }
 
-    h3{
-        margin-top: 0 10%;
-    }
-
-    p{
-        margin: 15px 20%;
-    }
-
-
 }
 
 .circulo{
-    margin: 20px auto;
+    margin: 35px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    background-color: #322861f3;
+    background: linear-gradient(to bottom, rgba(57, 15, 135, 0.82), rgba(75, 38, 209, 0.061) );
 
-    h1{
-        font-size: 50px;
-
+    h2{
+        font-size: 65px;
+        margin: 0;
     }
     p{
         margin: 0;
@@ -77,7 +66,11 @@ body{
 
 .Summary{
     width: 50%;
-    padding: 40px;
+    padding: 2% 6% 4% 6%;
+
+    h1{
+        font-weight: 500;
+    }
 
     h4{
         margin: 0;
@@ -96,6 +89,7 @@ body{
     //el primero es vertical y el segundo horizontal
     padding: 12px 20px;
     width: 100%;
+    height: 12%;
 }
 
 .btn:hover{
@@ -103,11 +97,7 @@ body{
     cursor: pointer;
 }
 
-.items{
-    display: flex;
-    //hace que los elementos se acomoden en columna y no en fila
-    flex-direction: column;
-}
+
 
 .icono{
     display: flex;
@@ -115,31 +105,78 @@ body{
     justify-content: center;
     width: 40px;
     height: 40px;
-    margin: 0 10px;
+    
 
 }
 
-
+.items{
+    display: flex;
+    //hace que los elementos se acomoden en columna y no en fila
+    flex-direction: column;
+    list-style-type: none;  /* quita los puntos */
+    padding: 0;  
+    width: 100%;
+}
 
 .item{
-    width: 100%;
-   // background-color: #f0fff9;
     display: flex;
     flex-direction: row;
-    margin: 10px 0px;
+    margin: 6px 0px;
     border-radius: 10px;
     justify-content: space-between;
-    .icono img{
-        width: 30px;
+    //se le da espaciado al texto desde el item
+    padding: 3px 10px;
+    .icono svg{
+        width: 20px;
     }
 
     
     &:nth-child(1){
+    
         background-color: #f8d8d8;
+        h4, .icono{
+            color: #f33f3f;
+            fill: #f33f3f;
+            stroke: #f33f3f;
+        }
     }
+
+    &:nth-child(2){
+    
+    background-color: #fdfce1;
+    h4, .icono{
+        color: #fce77d;
+        fill: #fce77d;
+        stroke: #fce77d;
+        }
+    }
+
+    &:nth-child(3){
+    
+    background-color: #cefddf;
+    h4, .icono{
+        color: #1fb059;
+        fill: #1fb059;
+        stroke: #1fb059;
+        }
+    }
+
+     &:nth-child(4){
+    
+    background-color: #cdd0f4;
+    h4, .icono{
+        color: #4547cc;
+        fill: #4547cc;
+        stroke: #4547cc;
+        }
+    }
+
+
+
+    
 }
 
-.texto-principal{
+.category-text{
     display: flex;
    
     align-items: center;
@@ -148,7 +185,7 @@ body{
     }
 }
 
-.texto-2{
+.score-text{
     display: flex;
     align-items: center;
     
@@ -156,37 +193,7 @@ body{
     p{
         margin: 0;
     }
-
-    margin: 0 10px;
-
-}
-
-.item:nth-child(1){
     
-    background-color: #f8d8d8;
-    h4{
-        color: #f33f3f;
-    }
 }
 
-.item:nth-child(2){
-    background-color: #fdfce1;
-    h4{
-        color: #caac33;
-    }
-}
 
-.item:nth-child(3){
-    background-color: #cefddf;
-
-    h4{
-        color: #1fb059;
-    }
-}
-
-.item:nth-child(4){
-    background-color: #cdd0f4;
-    h4{
-        color: #4547cc;
-    }
-}
