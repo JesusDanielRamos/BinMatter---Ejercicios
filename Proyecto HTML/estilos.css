@@ -6,7 +6,7 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.contenedor {
+.container {
   margin: auto 0;
   display: flex;
   background-color: white;
@@ -15,12 +15,12 @@ body {
   box-shadow: 10px 12px 12px rgba(0, 0, 0, 0.1);
 }
 @media (max-width: 768px) {
-  .contenedor {
+  .container {
     width: 85%;
   }
 }
 @media (max-width: 425px) {
-  .contenedor {
+  .container {
     width: 100%;
     flex-direction: column;
   }
@@ -51,7 +51,7 @@ body {
   }
 }
 
-.circulo {
+.circle {
   margin: 35px auto;
   display: flex;
   flex-direction: column;
@@ -62,11 +62,11 @@ body {
   border-radius: 50%;
   background: linear-gradient(to bottom, rgba(57, 15, 135, 0.82), rgba(75, 38, 209, 0.061));
 }
-.circulo h2 {
+.circle h2 {
   font-size: 65px;
   margin: 0;
 }
-.circulo p {
+.circle p {
   margin: 0;
 }
 
