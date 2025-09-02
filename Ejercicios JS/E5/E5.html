@@ -13,21 +13,45 @@
                 return "Número fuera de rango (1-3999)";
             }
             
+            //esta es una forma de definir un diccionario en JS
+            let romanosDiccionario = {
+                1000: "M",
+                900: "CM",
+                500: "D",
+                400: "CD",
+                100: "C",
+                90: "XC",
+                50: "L",
+                40: "XL",
+                10: "X",
+                9: "IX",
+                5: "V",
+                4: "IV",
+                1: "I"  
+            }
 
-
-             let valores = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
-             let simbolos = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+             //let valores = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+            // let simbolos = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
 
             let resultado = "";
-            let i = 0;
+            
+            // Convertir el diccionario en un arreglo de pares [clave, valor] y ordenarlo por clave descendente
+            //object.entries nos devuelve un arreglo de arreglos con los pares clave valor del diccionario
+            //con sort ordenamos el arreglo de mayor a menor
+            //b[0] y a[0] se refieren a las claves (los numeros) de los pares, no a los valores (los simbolos)
+            //Como son strings, al restarlas (b[0] - a[0]) JavaScript las convierte a número automáticamente.
+            let pares = Object.entries(romanosDiccionario).sort((a, b) => b[0] - a[0]);
+            console.log(pares);
 
-            while (num > 0) {
-                while (num >= valores[i]) {
-                        resultado += simbolos[i];
-                        num -= valores[i];
-                    }
-                 i++;
-             }
+            //recorremos el arreglo de pares y vamos restando el valor al numero original
+            //este es un for of que nos permite recorrer arreglos
+            for (let [valor, simbolo] of pares) {
+                valor = parseInt(valor); // convertir clave a número
+                while (num >= valor) {
+                    resultado += simbolo;
+                    num -= valor;
+            }
+    }
 
             return resultado;
         }
