@@ -1,0 +1,53 @@
+@charset "UTF-8";
+body {
+  background-image: linear-gradient(to bottom, #d4d3d3, #f7f7fe);
+  height: 100vh;
+  display: grid;
+  place-items: center; /* centra horizontal y vertical */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.calculator {
+  align-self: center;
+  width: clamp(200px, 50%, 550px);
+  max-height: 75vh;
+  background-color: #141313;
+  border-radius: 10px;
+  box-shadow: 10px 12px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+#display {
+  background-color: #000000;
+  color: white;
+  font-size: 2em;
+  text-align: right;
+  border-radius: 10px;
+  padding: 10px;
+  height: 25%;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(20px, 1fr));
+  gap: 15px;
+}
+
+.buttons button:nth-child(4n) {
+  background-color: #f1aa04; /* naranja para operadores */
+}
+
+button {
+  aspect-ratio: 1/1; /* ancho = alto */
+  max-width: 80px; /* límite ancho */
+  max-height: 80px; /* límite alto */
+  background-color: #6d6c6b;
+  color: white;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: large;
+}
+
+/*# sourceMappingURL=estilos.css.map */
