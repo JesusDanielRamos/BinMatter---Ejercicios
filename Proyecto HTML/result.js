@@ -1,10 +1,10 @@
 
 
-let nuevoValor = 35;
+let nuevoValor = 25;
 document.getElementById("resultPercentage").textContent = nuevoValor;
 
 
-let score1 = 89;
+let score1 = 29;
 let score2 = 92;
 let score3 = 61;
 let score4 = 72;

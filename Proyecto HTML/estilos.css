@@ -26,6 +26,13 @@ body {
   }
 }
 
+#resultPercentage {
+  font-size: 65px;
+  margin: 0;
+  color: white;
+  font-weight: bold;
+}
+
 .Result {
   width: 50%;
   padding: 5% 10%;
@@ -71,8 +78,9 @@ body {
 }
 
 .Summary {
-  width: 50%;
+  width: 80%;
   padding: 2% 6% 4% 6%;
+  box-sizing: border-box;
 }
 .Summary h1 {
   font-weight: 500;
@@ -86,11 +94,13 @@ body {
 @media (max-width: 375px) {
   .Summary {
     padding: 2%;
+    justify-content: center;
   }
 }
 @media (max-width: 425px) {
   .Summary {
-    width: 80%;
+    width: 100%;
+    justify-content: center;
     align-items: center;
   }
 }
@@ -114,9 +124,6 @@ body {
 .icono {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
 }
 
 .items {
@@ -133,7 +140,7 @@ body {
   margin: 6px 0px;
   border-radius: 10px;
   justify-content: space-between;
-  padding: 3px 10px;
+  padding: 15px 10px;
 }
 .item .icono svg {
   width: 20px;
@@ -173,6 +180,7 @@ body {
 
 .category-text {
   display: flex;
+  gap: 10px;
   align-items: center;
 }
 .category-text h3 {
