@@ -1,16 +1,22 @@
 let operaciones = []; 
 const expresionPostfija = []
 let expresionInfija = [];
-let resultadofinal;
+let resultadofinal=[];
+let yaCalcule = false;
 
 //debemos de crear la funcion
 function agregarNumero(numero) {
     operaciones.push(numero);
-    console.log(numero);
     numero  += operaciones;
     console.log(operaciones);
     document.getElementById("display").innerText = operaciones.join(" "); // Convertir el arreglo a cadena para mostrar en el display
+    console.log(yaCalcule);
+    
+    
 }
+
+
+
 
 function borrar() {
     operaciones.pop();
@@ -18,17 +24,19 @@ function borrar() {
     document.getElementById("display").innerText = operaciones;
     document.getElementById("display").innerText = operaciones.join(""); // Convertir el arreglo a cadena para mostrar en el display
 
-    console.log(resultadofinal)
-    if(resultadofinal.length >= 1){
-        borrarTodo(operaciones);
-        console.log("se limpia todo")
+    if(operaciones.length === 0){
+        document.getElementById("display").innerText = '0';
     }
+    
 }
 
 function borrarTodo(arreglo){
     //investigue la forma mas eficiente de borrar todo en un arreglo es asi
     arreglo.length = 0; 
+   
 }
+
+
 
 
 function obtenerInfija() {
@@ -51,13 +59,25 @@ function obtenerInfija() {
             // luego guardamos el operador
             expresionInfija.push(token);
         }
+
     }
 
+    // eliminar operador final si existe
+    //para saber el ultimo elemento del array es length -1
+
+   
+    
+    
     // agregar último número si quedó pendiente
     if (numero !== "") {
         expresionInfija.push(numero);
     }
 
+    if(isNaN(expresionInfija[expresionInfija.length-1])){
+        expresionInfija.pop();
+        console.log("expresion array despues de pop " + expresionInfija);
+    }
+    console.log("ultimo elemento del array " + expresionInfija[expresionInfija.length -1]);
     console.log("Expresión en notación infija:", expresionInfija);
     
     console.log("expresion array " + expresionArray);
@@ -68,7 +88,7 @@ function obtenerInfija() {
 function infijaAPostfija() {
     let expresion = expresionInfija;
 
-    const pila = [];
+    const pila = []; // pila temporal para operadores 
     const operadores = {
         '+': 1,
         '-': 1,
@@ -78,6 +98,7 @@ function infijaAPostfija() {
 
     let numero = ""; // para acumular dígitos de números grandes
 
+    // recorrer la expresión infija token por token 
     for (let i = 0; i < expresion.length; i++) {
         const token = expresion[i];
 
@@ -85,7 +106,7 @@ function infijaAPostfija() {
             // si es dígito, lo añadimos al número temporal
             numero += token;
         } else {
-            // si encontramos un operador, primero guardamos el número acumulado
+            // si encontramos un operador, primero guardamos el número acumulado en postfija final y limpiamos
             if (numero !== "") {
                 expresionPostfija.push(numero);
                 numero = "";
@@ -93,6 +114,8 @@ function infijaAPostfija() {
 
             // ahora procesamos el operador
             if (operadores[token]) {
+                // mientras haya operadores en la pila con mayor o igual precedencia, los sacamos a postfija, luego ponemos el nuevo operador en la pila
+                
                 while (pila.length > 0 && operadores[pila[pila.length - 1]] >= operadores[token]) {
                     expresionPostfija.push(pila.pop());
                 }
@@ -120,7 +143,7 @@ function calcularPostfija() {
     infijaAPostfija();
     
     let pilaCalculo = [];
-    let op1, op2 
+    let op1, op2;
     let resultadoOperaciones = 0;
     
 
@@ -133,8 +156,7 @@ function calcularPostfija() {
             
             console.log("Operador:", expresionPostfija[i]);
             switch(expresionPostfija[i]) {
-                case '+':
-                    
+                case '+':        
                     resultadoOperaciones = op1 + op2;
                     break;
                 case '-':
@@ -159,6 +181,7 @@ function calcularPostfija() {
     
     resultadofinal = pilaCalculo.pop(); // El resultado final es el único número que queda en la pila
     console.log("Resultado final:", resultadofinal);
+    yaCalcule = true;
     borrarTodo(pilaCalculo);
     borrarTodo(operaciones);
     borrarTodo(expresionInfija);
