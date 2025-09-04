@@ -17,78 +17,36 @@
             { name: 'ball', quantity: 2, category: 'sports' },
             { name: 'car', quantity: 2, category: 'toys' },
             { name: 'racket', quantity: 4, category: 'sports' }
+
             ]
 
             function OrganizarInventario(inventario) {
-                //aqui separamos primero las categorias
-                let juguetes = [];
-                let deportes = [];
+                let categorias = {}; //esto crea un objeto vacio, yo queria antes hacer un arreglo vacio, pero no se puede
+                //un objeto es una coleccion de propiedades, y cada propiedad tiene un nombre y un valor
+                //en este caso el nombre de la propiedad es la categoria, y el valor es un arreglo de objetos que pertenecen a esa categoria
 
-                //aqui guardamos los nombres separados en resultados finales
-                let juguetesFinales = [
-                    { name: 'doll', quantity: 0},
-                    { name: 'car', quantity: 0}
-                ];
-
-                //aqui guardamos los nombres separados en resultados finales
-                let deportesFinales = [
-                    { name: 'ball', quantity: 0},
-                    { name: 'racket', quantity: 0}
-                ];
-
-                //recorremos el inventario
                 for (let i = 0; i < inventario.length; i++) {
-                    if(inventario[i].category == 'toys') {
+                    const item = inventario[i];
+                    const categoria = item.category;
 
-                        //y los vamos agregando al arreglo juguetes
-                        juguetes.push(inventario[i]);
+                    if (!categorias[categoria]) {
+                        categorias[categoria] = []; //si no existe la categoria, la crea
                     }
-                    else if(inventario[i].category == 'sports') {
 
-                        //guardamos los deportes en otro arreglo
-                        deportes.push(inventario[i]);
-                    } else{
-                        //error
-                    }
-                        
+                    //accede al arreglo que corresponde a esa categoría.
+                    //o sea categorias[categoria] es un arreglo
+                    //y le agrega el item actual
+                    //pero si no existe la categoria, la crea como un arreglo vacio en if de arriba
+                    //y luego le agrega el item
+                    categorias[categoria].push(item); 
                 }
 
-                //cree dos arreglos mas para guardar los resultados finales
-                for (let i = 0; i < juguetes.length; i++) {
-                   if(juguetes[i].name == 'car') {
-                        juguetesFinales[1].quantity += juguetes[i].quantity;
-                    }
-                    if(juguetes[i].name == 'doll') {
-                        juguetesFinales[0].quantity += juguetes[i].quantity;
-                    }else{
-                        //error
-                    }
-                }
-                
-                for (let i = 0; i < deportes.length; i++) {
-                   if(deportes[i].name == 'ball') {
-                        deportesFinales[0].quantity += deportes[i].quantity;
-                    }
-                    if(deportes[i].name == 'racket') {
-                        deportesFinales[1].quantity += deportes[i].quantity;
-                    }else{
-                        //error
-                    }
-                }
-
-                //comprobamos que los arreglos se hayan llenado correctamente
-                console.log("Juguetes finales:", juguetesFinales);
-                console.log("Deportes finales:", deportesFinales);
-
-
-                //BUSQUE EN INTERNET PARA VER COMO IMPRIMIR ARREGLOS 
-                //Y ENCONTRÉ ESTA FORMA DE USAR JSON.STRINGIFY
-                document.getElementById("categoria1").innerText = JSON.stringify(juguetesFinales, null, 2);
-                document.getElementById("categoria2").innerText = JSON.stringify(deportesFinales, null, 2);
+                return categorias;
             }
 
-            OrganizarInventario(inventario);
-
+            
+           
+            console.log(OrganizarInventario(inventario));
            
     </script>
 </body>
