@@ -1,86 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E3</title>
 </head>
+
 <body>
     <script>
-        const original = 'stepfor'
-        const modified = 'stepor'
+        const original = 'stepfoar'
+        const modified = 'stepfoer'
 
         function findWrongNote(original, modified) {
             let originalPrueba = original;
             let modifiedPrueba = modified;
+            let palabraLarga = '';
+            let letraFaltante = '';
 
-
-            if(originalPrueba == modifiedPrueba) {
+            if (originalPrueba == modifiedPrueba) {
                 console.log("No hay notas incorrectas");
                 console.log(" ");
-            }else if(originalPrueba == '' || originalPrueba.length < 1) {
+            } else if (originalPrueba == '' || originalPrueba.length < 1) {
                 console.log("No hay notas en el original");
-            }else{
+            } else {
                 console.log("hay notas incorrectas");
-                
-                
-                //comprogbamos si el original tiene más notas que el modificado
-                if(originalPrueba.length > modifiedPrueba.length) {
-                    console.log("El original tiene más notas que el modificado");
-                    let letraFaltante = ''; 
-              
 
-                   
-                   
-                    for(let i = 0; i < originalPrueba.length; i++) {
-                        if(originalPrueba[i] != modifiedPrueba[i] && letraFaltante == '') {
-                           //console.log("Nota incorrecta: " + modifiedPrueba[i]);
-                           letraFaltante = originalPrueba[i]
-                           
-                        }
-                        
-                    }
-                    console.log("Letra faltante: " + letraFaltante)
-                
+
+                if (originalPrueba.length > modifiedPrueba.length) {
+                    palabraLarga = originalPrueba;
+                } else {
+                    palabraLarga = modifiedPrueba;
                 }
-            
-                //en caso de que el modificado tenga más notas que el original
-                if(originalPrueba.length < modifiedPrueba.length) {
-                    console.log("El modificado tiene mas notas que el original");
-                    let letraFaltante2 = ''; 
+                
 
+                
+                for (let i = 0; i < palabraLarga.length; i++) {
                     
-
-                    for(let i = 0; i < modifiedPrueba.length; i++) {
-                        if(originalPrueba[i] != modifiedPrueba[i] && letraFaltante2 == '') {
-                           //console.log("Nota incorrecta: " + modifiedPrueba[i]);
-                           letraFaltante2 = modifiedPrueba[i]
-                           
-                        }
-                        
-                        
+                    if (originalPrueba[i] != modifiedPrueba[i] && letraFaltante == '' && originalPrueba.length < modifiedPrueba.length) {
+                        //console.log("Nota incorrecta: " + modifiedPrueba[i]);
+                        letraFaltante = modifiedPrueba[i]
+                        console.log("Letra faltante: " + letraFaltante)
                     }
-                    console.log("Letra faltante: " + letraFaltante2)
+                     if (originalPrueba[i] != modifiedPrueba[i] && letraFaltante == '' && originalPrueba.length > modifiedPrueba.length) {
+                        //console.log("Nota incorrecta: " + modifiedPrueba[i]);
+                        letraFaltante = originalPrueba[i]
+                        console.log("Letra faltante: " + letraFaltante)
+                    }
+                    
                 }
-
+                
                 // hacemos un for que recorrra el original y el modificado
                 // y compare cada letra, y si son diferentes, las imprime
                 // y si son iguales, no hace nada
-                if(originalPrueba.length == modifiedPrueba.length) {
+                if (originalPrueba.length == modifiedPrueba.length) {
                     console.log("El original y el modificado tienen la misma cantidad de notas");
-                            for(let i = 0; i < originalPrueba.length; i++) {
-                                 if(originalPrueba[i] != modifiedPrueba[i]) {
-                                console.log("Nota incorrecta: " + modifiedPrueba[i]);
-                                 }
-                            }
-                }
+                    for (let i = 0; i < originalPrueba.length; i++) {
+                        if (originalPrueba[i] != modifiedPrueba[i]) {
+                            console.log("Nota incorrecta: " + modifiedPrueba[i]);
+                        }
+                    }
+                }else{
                     
-                
+                }
+
+
             }
-                
+
         }
 
         findWrongNote(original, modified);
     </script>
 </body>
+
 </html>
