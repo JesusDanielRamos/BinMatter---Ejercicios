@@ -9,8 +9,8 @@
 
 <body>
     <script>
-        const original = 'stepfoar'
-        const modified = 'stepfoer'
+        const original = 'stepfoer'
+        const modified = 'stepfouer'
 
         function findWrongNote(original, modified) {
             let originalPrueba = original;
@@ -27,20 +27,20 @@
                 console.log("hay notas incorrectas");
 
 
-                if (originalPrueba.length > modifiedPrueba.length) {
-                    palabraLarga = originalPrueba;
-                } else {
-                    palabraLarga = modifiedPrueba;
-                }
-                
-
+                // if (originalPrueba.length > modifiedPrueba.length) {
+                //     palabraLarga = originalPrueba;
+                // } else {
+                //     palabraLarga = modifiedPrueba;
+                // }
+                //operador ternario
+                palabraLarga = originalPrueba.length> modifiedPrueba.length ? originalPrueba : modifiedPrueba;
                 
                 for (let i = 0; i < palabraLarga.length; i++) {
                     
                     if (originalPrueba[i] != modifiedPrueba[i] && letraFaltante == '' && originalPrueba.length < modifiedPrueba.length) {
                         //console.log("Nota incorrecta: " + modifiedPrueba[i]);
                         letraFaltante = modifiedPrueba[i]
-                        console.log("Letra faltante: " + letraFaltante)
+                        console.log("Letra sobrante: " + letraFaltante)
                     }
                      if (originalPrueba[i] != modifiedPrueba[i] && letraFaltante == '' && originalPrueba.length > modifiedPrueba.length) {
                         //console.log("Nota incorrecta: " + modifiedPrueba[i]);
@@ -60,10 +60,7 @@
                             console.log("Nota incorrecta: " + modifiedPrueba[i]);
                         }
                     }
-                }else{
-                    
                 }
-
 
             }
 

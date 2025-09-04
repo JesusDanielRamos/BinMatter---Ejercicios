@@ -17,7 +17,6 @@
             { name: 'ball', quantity: 2, category: 'sports' },
             { name: 'car', quantity: 2, category: 'toys' },
             { name: 'racket', quantity: 4, category: 'sports' }
-
             ]
 
             function OrganizarInventario(inventario) {
@@ -38,7 +37,9 @@
                     //y le agrega el item actual
                     //pero si no existe la categoria, la crea como un arreglo vacio en if de arriba
                     //y luego le agrega el item
-                    categorias[categoria].push(item); 
+                    
+                    categorias[categoria].push(item);
+
                 }
 
                 return categorias;

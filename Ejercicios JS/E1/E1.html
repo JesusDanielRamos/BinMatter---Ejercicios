@@ -37,14 +37,14 @@
             
             //usamos repeat para repetir el asterisco la cantidad de veces
             //de la longitud de la palabra mas larga + 2 (por los espacios que van a cada lado)
-            marco = asterisco.repeat(palabraMasLarga.length + 2);       
+            marco = asterisco.repeat(palabraMasLarga.length + 4);       
             document.getElementById("inicio").innerText = marco;
             //ahora recorremos el arreglo de nombres para ir imprimiendo cada nombre con los espacios necesarios
              for(let i = 0; i < nombres.length; i++){
                 let espacios = palabraMasLarga.length - nombres[i].length;
                 console.log(espacios);
                 let marcoFinal = " ".repeat(espacios); // aquí sí se guardan los espacios 
-                salidaFinal += `*${nombres[i]}${marcoFinal}* <br>`;
+                salidaFinal += `* ${nombres[i]}${marcoFinal} * <br>`;
              }
              //aqui ya imprimimos el arreglo con los nombres y los espacios
              document.getElementById("arregloNombres").innerHTML = salidaFinal;
