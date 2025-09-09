@@ -7,12 +7,27 @@ let yaCalcule = false;
 //debemos de crear la funcion
 function agregarNumero(numero) {
     operaciones.push(numero);
-    numero  += operaciones;
     console.log(operaciones);
     document.getElementById("display").innerText = operaciones.join(" "); // Convertir el arreglo a cadena para mostrar en el display
-    console.log(yaCalcule);
     
-    
+
+    console.log(numero + " fue agregado");
+   
+    if(yaCalcule  && operaciones.length >= 1){
+        borrarTodo(operaciones);
+        document.getElementById("display").innerText = '0';
+        yaCalcule = false;
+        console.log("ya calcule y agregue un numero, borro todo");
+    }
+    console.log("yaCalcule es " + yaCalcule);
+}
+
+function agregarOperador(operador) {
+    // Verificar si el último elemento es un operador
+   operaciones.push(operador);
+   console.log(operaciones);
+   document.getElementById("display").innerText = operaciones.join(" "); // Convertir el arreglo a cadena para mostrar en el display
+   yaCalcule = false;
 }
 
 
@@ -47,9 +62,9 @@ function obtenerInfija() {
     for (let i = 0; i < expresionArray.length; i++) {
         let token = expresionArray[i];
 
-        if (!isNaN(token)) {
+        if (!isNaN(token) || token == '.') {
             // si es dígito, lo acumulamos
-            numero += token;
+            numero += token; //aqui acumulamos el numero en decenas, centenas y si es un punto decimal tambien lo agrega
         } else {
             // si encontramos un operador, primero guardamos el número acumulado
             if (numero !== "") {
@@ -72,15 +87,16 @@ function obtenerInfija() {
     if (numero !== "") {
         expresionInfija.push(numero);
     }
+    
 
     if(isNaN(expresionInfija[expresionInfija.length-1])){
         expresionInfija.pop();
         console.log("expresion array despues de pop " + expresionInfija);
     }
-    console.log("ultimo elemento del array " + expresionInfija[expresionInfija.length -1]);
+
     console.log("Expresión en notación infija:", expresionInfija);
     
-    console.log("expresion array " + expresionArray);
+
     borrarTodo(expresionArray);
     
 }
@@ -88,7 +104,7 @@ function obtenerInfija() {
 function infijaAPostfija() {
     let expresion = expresionInfija;
 
-    const pila = []; // pila temporal para operadores 
+    let pila = []; // pila temporal para operadores 
     const operadores = {
         '+': 1,
         '-': 1,
@@ -146,42 +162,49 @@ function calcularPostfija() {
     let op1, op2;
     let resultadoOperaciones = 0;
     
-
-    for(let i = 0; i < expresionPostfija.length; i++) {
-        
-        //si no es un numero entonces es un operador, y lo metemos a la pila 
-        if(isNaN(expresionPostfija[i])) {
-            op2 = pilaCalculo.pop(); // Sacar el último número ingresado (el segundo operando)
-            op1 = pilaCalculo.pop(); // Sacar el penúltimo número ingresado
+    if(expresionPostfija.length >= 1 ) {
+            for(let i = 0; i < expresionPostfija.length; i++) {
             
-            console.log("Operador:", expresionPostfija[i]);
-            switch(expresionPostfija[i]) {
-                case '+':        
-                    resultadoOperaciones = op1 + op2;
-                    break;
-                case '-':
-                    resultadoOperaciones = op1 - op2;
-                    break;
-                case '*':   
-                    resultadoOperaciones = op1 * op2;
-                    break;
-                case '/':
-                    resultadoOperaciones = op1 / op2;
-                    break;
+            //si no es un numero entonces es un operador, y lo metemos a la pila 
+            if(isNaN(expresionPostfija[i])) {
+                op2 = pilaCalculo.pop(); // Sacar el último número ingresado (el segundo operando)
+                op1 = pilaCalculo.pop(); // Sacar el penúltimo número ingresado
+                
+                console.log("Operador:", expresionPostfija[i]);
+                switch(expresionPostfija[i]) {
+                    case '+':        
+                        resultadoOperaciones = op1 + op2;
+                        break;
+                    case '-':
+                        resultadoOperaciones = op1 - op2;
+                        break;
+                    case '*':   
+                        resultadoOperaciones = op1 * op2;
+                        break;
+                    case '/':
+                        resultadoOperaciones = op1 / op2;
+                        break;
+                }
+                pilaCalculo.push(resultadoOperaciones); // Poner el resultado de vuelta en la pila
+                console.log("Pila después de operar:", pilaCalculo);
+            }else {
+                pilaCalculo.push(parseFloat(expresionPostfija[i])); // Convertir a número y agregar a la pila
+                console.log("Pila después de agregar número:", pilaCalculo);
             }
-            pilaCalculo.push(resultadoOperaciones); // Poner el resultado de vuelta en la pila
-            console.log("Pila después de operar:", pilaCalculo);
-        }else {
-            pilaCalculo.push(parseFloat(expresionPostfija[i])); // Convertir a número y agregar a la pila
-            console.log("Pila después de agregar número:", pilaCalculo);
+        ;
         }
-      ;
+    }else{
+        document.getElementById("display").innerText = '0';
+        return;
     }
+
+   
 
     
     resultadofinal = pilaCalculo.pop(); // El resultado final es el único número que queda en la pila
     console.log("Resultado final:", resultadofinal);
     yaCalcule = true;
+    console.log("yaCalcule despues de operar es: " + yaCalcule);
     borrarTodo(pilaCalculo);
     borrarTodo(operaciones);
     borrarTodo(expresionInfija);
