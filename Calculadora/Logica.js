@@ -30,6 +30,12 @@ function agregarOperador(operador) {
    yaCalcule = false;
 }
 
+function agregarParentesis(parentesis) {
+    operaciones.push(parentesis);
+    console.log(operaciones);
+    document.getElementById("display").innerText = operaciones.join(" ");
+}
+
 
 
 
@@ -80,15 +86,11 @@ function obtenerInfija() {
     // eliminar operador final si existe
     //para saber el ultimo elemento del array es length -1
 
-   
-    
-    
     // agregar último número si quedó pendiente
     if (numero !== "") {
         expresionInfija.push(numero);
     }
     
-
     if(isNaN(expresionInfija[expresionInfija.length-1])){
         expresionInfija.pop();
         console.log("expresion array despues de pop " + expresionInfija);
@@ -96,9 +98,7 @@ function obtenerInfija() {
 
     console.log("Expresión en notación infija:", expresionInfija);
     
-
     borrarTodo(expresionArray);
-    
 }
 
 function infijaAPostfija() {
@@ -122,16 +122,18 @@ function infijaAPostfija() {
             // si es dígito, lo añadimos al número temporal
             numero += token;
         } else {
+
             // si encontramos un operador, primero guardamos el número acumulado en postfija final y limpiamos
             if (numero !== "") {
                 expresionPostfija.push(numero);
                 numero = "";
             }
 
+             //PARA PARENTESIS, SI ES "(", LO METEMOS DIRECTO A LA PILA, SI ES ")", VACIAMOS HASTA ENCONTRAR EL "(" ANTERIOR
             // ahora procesamos el operador
             if (operadores[token]) {
                 // mientras haya operadores en la pila con mayor o igual precedencia, los sacamos a postfija, luego ponemos el nuevo operador en la pila
-                
+               
                 while (pila.length > 0 && operadores[pila[pila.length - 1]] >= operadores[token]) {
                     expresionPostfija.push(pila.pop());
                 }
