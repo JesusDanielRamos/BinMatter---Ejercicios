@@ -83,7 +83,7 @@ function obtenerInfija() {
 
     }
 
-    // eliminar operador final si existe
+    
     //para saber el ultimo elemento del array es length -1
 
     // agregar último número si quedó pendiente
@@ -91,6 +91,7 @@ function obtenerInfija() {
         expresionInfija.push(numero);
     }
     
+    // eliminar operador final si existe
     if(isNaN(expresionInfija[expresionInfija.length-1])){
         expresionInfija.pop();
         console.log("expresion array despues de pop " + expresionInfija);
@@ -105,7 +106,7 @@ function infijaAPostfija() {
     let expresion = expresionInfija;
 
     let pila = []; // pila temporal para operadores 
-    const operadores = {
+    let operadores = {
         '+': 1,
         '-': 1,
         '*': 2,
@@ -128,14 +129,25 @@ function infijaAPostfija() {
                 expresionPostfija.push(numero);
                 numero = "";
             }
-
+            
              //PARA PARENTESIS, SI ES "(", LO METEMOS DIRECTO A LA PILA, SI ES ")", VACIAMOS HASTA ENCONTRAR EL "(" ANTERIOR
             // ahora procesamos el operador
+
+            if (token == '('){
+                pila.push(token);
+            }
+            else if (token === ")") {
+                while (pila.length > 0 && pila[pila.length - 1] !== "(") {
+                    expresionPostfija.push(pila.pop());
+                }
+                pila.pop(); // quitar el "(" de la pila
+            }
+
             if (operadores[token]) {
                 // mientras haya operadores en la pila con mayor o igual precedencia, los sacamos a postfija, luego ponemos el nuevo operador en la pila
                
                 while (pila.length > 0 && operadores[pila[pila.length - 1]] >= operadores[token]) {
-                    expresionPostfija.push(pila.pop());
+                    expresionPostfija.push(pila.pop()); //se pasa a la expresion postfija
                 }
                 pila.push(token);
             }
