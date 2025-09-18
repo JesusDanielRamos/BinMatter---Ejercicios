@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+//aqui le quitamos el margin por defecto que nos incluye el navegador, esto lo hacemos aqui en el css global
+//solo haremos este cambio aqui, despues nada
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
