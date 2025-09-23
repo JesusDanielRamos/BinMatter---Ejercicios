@@ -1,1 +1,14 @@
-<p>pokemon-list works!</p>
+
+<div class="Principal-Title">
+    <h1>{{ Title }}</h1>
+    <p>{{Content}}</p>
+</div>
+
+
+<app-search-bar> </app-search-bar>
+<main class="pokemons-container">
+    <div class="pokemon-cards">
+        <app-pokemon-item *ngFor="let pokemon of listaPokemon" [data] = "pokemon">
+        </app-pokemon-item>
+    </div>
+</main>

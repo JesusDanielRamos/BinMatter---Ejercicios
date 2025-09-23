@@ -1,0 +1,29 @@
+
+.Principal-Title{
+    text-align: center;
+    margin: 0 auto;
+    width: 35%;
+    padding-top: 5%;
+    h1{
+        color: rgb(94, 83, 137);
+    }   
+}
+
+.pokemons-container{
+    display: flex;
+    justify-content: center;
+}
+
+.pokemon-cards{
+    display: grid;
+  /*deja que quepan más columnas */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 50px;
+    padding: 40px;
+    border-radius: 10px;
+    border: 2px solid rgb(94, 83, 137);
+    width: 85%; /* aprovecha el ancho */
+    max-width: 1400px; /* no se estira infinito en pantallas grandes */
+    margin: 0 auto;
+}
+

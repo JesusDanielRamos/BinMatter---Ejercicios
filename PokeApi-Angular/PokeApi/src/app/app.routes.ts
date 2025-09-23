@@ -1,14 +1,19 @@
 import { Routes } from '@angular/router';
 //aqui importamos nuestro componente, referenciarlo aqui sirve si queremos usar el <router-otulet>
 import { App } from './app';
+import { PokemonDetail } from './pokemon-detail/pokemon-detail';
+import { PokemonList } from './pages/pokemon-list/pokemon-list';
 
 
 //arreglo vacio de rutas
 export const routes: Routes = [
 
-    {path: '',
-     component: App
-    }
+  { path: '', component: PokemonList },           // Home  lista de Pokémon
+  { path: 'pokemon/:id', component: PokemonDetail }, // Detalle
+  {
+    path: '**',            //  ruta "catch-all" (404)
+    redirectTo: ''         // redirige a home, o crea un PageNotFoundComponent
+  }
     
 ];
 

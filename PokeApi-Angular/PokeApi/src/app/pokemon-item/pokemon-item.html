@@ -1,0 +1,13 @@
+<div class="pokemon-container" id="tarjeta" (click)="goToDetail(id)"   >  <!-- aqui agregamos routerLink -->
+    
+    <div class="pokemon-image"> <img src= 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id}}.png' alt=""></div>
+    <div class="pokemon-text"> 
+        <div>
+            <span>No. {{id}}</span>
+        <h3 *ngIf="data">{{data.name | titlecase}}</h3>
+        </div>
+        <div class="pokemon-type">
+            <p *ngFor="let t of data?.types">{{ t.type.name | titlecase }} </p>
+        </div>   
+    </div>
+</div>
