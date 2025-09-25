@@ -1,13 +1,16 @@
+<div>
+    <app-search-bar> </app-search-bar>
+</div>
 <div class="detail-container">
     <button (click)="goBack()">Regresar a la lista</button>
      <div class="pokemon-image"> <img src= 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id}}.png' alt=""></div>
     <div class="pokemon-text"> 
         <div>
             <span>{{id}}</span>
-        <h3>{{pokemon.name | titlecase}}</h3>
+        <h3>{{data?.name| titlecase}}</h3>
         </div>
         <div class="pokemon-type">
-            <p>{{pokemon.height}}</p>
+            <p>{{data?.height}}</p>
         </div>   
     </div>
 </div>

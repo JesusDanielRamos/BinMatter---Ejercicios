@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { PokeApi } from '../../core/services/poke-api';
 import { catchError, finalize, Observable } from 'rxjs';
 import { Pokemon, PokemonResults } from '../../interfaces/pokemon';
@@ -18,7 +18,7 @@ export class PokemonList implements OnInit{
   Title = "Pokédex";
   Content = "Una guía sencilla para encontrar todos los pokemones! Información sacada de la PokeApi, busca todos los pokemones!!";
 
-  constructor(private pokeApi: PokeApi){}
+  private pokeApi = inject(PokeApi);
   listaPokemon : Pokemon[] = [];
 
   //metodo que se llama cuando inicia la aplicacion 
@@ -28,9 +28,8 @@ export class PokemonList implements OnInit{
 
   async cargarLista(){
 
-
   this.pokeApi.getByPage().subscribe(d => { //te permite poder acceder lo que retorna la funcion que contiene el observable
-    console.log(d);
+    console.log(d + "lista cargada y suscrito");
      this.listaPokemon =   [...this.listaPokemon, ...d];
   })
  

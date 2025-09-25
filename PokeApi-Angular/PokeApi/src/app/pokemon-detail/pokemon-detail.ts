@@ -4,20 +4,21 @@ import { CommonModule } from '@angular/common';
 import { PokeApi } from '../core/services/poke-api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { SearchBar } from '../search-bar/search-bar';
 
 
 @Component({
   selector: 'app-pokemon-detail',
-  imports: [CommonModule],
+  imports: [CommonModule, SearchBar],
   templateUrl: './pokemon-detail.html',
   styleUrl: './pokemon-detail.scss'
 })
 export class PokemonDetail {
+  //pasame la informacion de data por la interfaz pokemon y ahora con data podemos usar la informacion que hay ahi 
   @Input() data?: Pokemon;
-  
-  
+
+  //la ! le dice a ts que asignara un valor, pero que en su inicio no tiene nada, no esta inicializada
   id!: string | null;
-  pokemon: any; // puedes luego tiparlo con tu interfaz Pokemon
 
   constructor(
     private route: ActivatedRoute,
@@ -31,8 +32,8 @@ export class PokemonDetail {
 
     if (this.id) {
       // Llamamos a la API usando el servicio
-      this.pokemon = await this.pokeApi.getById(this.id);
-      console.log('Pokemon cargado:', this.pokemon);
+      this.data = await this.pokeApi.getById(this.id);
+      console.log('Pokemon cargado:', this.data);
     }
   }
  

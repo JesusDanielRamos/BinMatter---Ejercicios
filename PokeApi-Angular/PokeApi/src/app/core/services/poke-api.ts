@@ -11,27 +11,24 @@ export class PokeApi {
  //inject es la nueva forma de acceder a archivos en lugar de hacer un constructor 
   private http = inject(HttpClient);
   // constructor(private http: HttpClient){}
-
-  //funciones asincrona que devuelve una promesa que cuando se resuelva regresa un tipo de dato Pokemon de nuestra interfaz 
    getByPage() {
     //map permite filtrar 
-      return this.http.get("https://pokeapi.co/api/v2/pokemon/?limit=100&offset=0").pipe(map((d: any) => {
-console.log(d)
-        return d.results;
+      return this.http.get("https://pokeapi.co/api/v2/pokemon/?limit=50&offset=0").pipe(map((respuestaJson: any) => {
+        console.log(respuestaJson)
+        return respuestaJson.results;
       }));
-      // const resultadoApi = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=100&offset=0");
-      // //lee el JSON de la respuesta del backend
-      // const apiJson = await resultadoApi.json();
-      // if(apiJson.results.length > 0) return apiJson.results
-      // return [];
   }
 
   //con este metodo podemos acceder al ID de cada pokemon
   async getById(id:string){
+    
     const resultadoApi = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
       //lee el JSON de la respuesta del backend
       const apiJson = await resultadoApi.json();
-      console.log(apiJson);
+      console.log(apiJson + "pokemon por ID") ;
+
+      // const api2 = this.http.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      // console.log(api2 + "api2");
       return apiJson;
   }
   

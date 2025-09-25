@@ -1,13 +1,18 @@
-<div class="pokemon-container" id="tarjeta" (click)="goToDetail(id)"   >  <!-- aqui agregamos routerLink -->
+<div class="pokemon-container"  (click)="goToDetail(id)"   > 
+    <div class="pokemon-image"   [ngStyle]="{'background-color': getTypeOfColorImage()}"> <img src= 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id}}.png' alt=""></div>
     
-    <div class="pokemon-image"> <img src= 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id}}.png' alt=""></div>
     <div class="pokemon-text"> 
         <div>
-            <span>No. {{id}}</span>
-        <h3 *ngIf="data">{{data.name | titlecase}}</h3>
+            
+            <span>No.{{id}}</span>
+         
+         @if(data) {<h3 >{{data.name | titlecase}}</h3>}   
         </div>
         <div class="pokemon-type">
-            <p *ngFor="let t of data?.types">{{ t.type.name | titlecase }} </p>
+            <p  *ngFor="let t of data?.types " [ngStyle]="{'background-color': getColorType(t.type.name)}" >{{ t.type.name | titlecase }} </p>
+            
         </div>   
     </div>
 </div>
+
+<!-- nivelar imagenes, colores con variables css --> <!-- usar clase dinamica no una funcion -->

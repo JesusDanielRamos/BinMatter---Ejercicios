@@ -8,6 +8,7 @@
 <app-search-bar> </app-search-bar>
 <main class="pokemons-container">
     <div class="pokemon-cards">
+        <!-- El padre lo pasa al hijo con property binding:  [data]-->
         <app-pokemon-item *ngFor="let pokemon of listaPokemon" [data] = "pokemon">
         </app-pokemon-item>
     </div>

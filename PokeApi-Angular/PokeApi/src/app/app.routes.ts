@@ -9,7 +9,7 @@ import { PokemonList } from './pages/pokemon-list/pokemon-list';
 export const routes: Routes = [
 
   { path: '', component: PokemonList },           // Home  lista de Pokémon
-  { path: 'pokemon/:id', component: PokemonDetail }, // Detalle
+  { path: 'pokemon/:id', component: PokemonDetail }, // lo que esta entre comillas es el nombre designado, y el segundo nuestro componente deseado a navegar
   {
     path: '**',            //  ruta "catch-all" (404)
     redirectTo: ''         // redirige a home, o crea un PageNotFoundComponent

@@ -24,9 +24,6 @@ export interface Pokemon {
 }
 
 
-
-
-
 export interface PokemonResults{
     count: Number;
     next: string;
