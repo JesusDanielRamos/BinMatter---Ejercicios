@@ -1,16 +1,38 @@
-<div>
-    <app-search-bar> </app-search-bar>
+<div class="search-bar">
+    <div class="search-bar-item">
+        
+      <p>{{Content}}</p> 
+    </div>
+    <div class="search-bar-item"> 
+        <app-search-bar> </app-search-bar>
+    </div>
 </div>
 <div class="detail-container">
-    <button (click)="goBack()">Regresar a la lista</button>
-     <div class="pokemon-image"> <img src= 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id}}.png' alt=""></div>
-    <div class="pokemon-text"> 
-        <div>
-            <span>{{id}}</span>
-        <h3>{{data?.name| titlecase}}</h3>
-        </div>
-        <div class="pokemon-type">
-            <p>{{data?.height}}</p>
-        </div>   
+    <div class="pokemon-profile"> 
+         <p  id="backButton" (click)="goBack()"><-Regresar</p>
+                <div class="pokemon-text"> 
+                    <div>
+                        <!-- <span>{{id}}</span> -->
+                    <h3>{{data?.name| titlecase}}</h3>
+                    </div>
+                    <div class="pokemon-type">
+                        @for (t of data?.types; track t.type.name) {
+                            <div class="type-item">
+                                <p class="color-text-{{t.type.name}}">{{ t.type.name | titlecase }}</p>  
+                            </div>       
+                            }
+                    </div>   
+                </div>
+         @if(data){
+            <app-get-image [data]="data" [id]="id"></app-get-image>
+        }   
+
+    </div>
+   
+    
+    
+    <div class="pokemon-evolutions"> 
+        <app-stats [data]="data" [id]="id"></app-stats>
+
     </div>
 </div>

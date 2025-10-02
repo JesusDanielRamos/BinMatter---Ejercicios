@@ -1,4 +1,8 @@
-<form action="" method="get">
-  <input id="busqueda" type="search" name="barraBusqueda" placeholder="Buscar pokemones..." >
-  <button type="submit">Go</button>
+<form (ngSubmit) = "searchPokemon()" >
+  <div class="search">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input id="busqueda" [(ngModel)]="searchTerm" type="search"  name="barraBusqueda" placeholder="Buscar pokemones..." >
+    
+  </div>
+   <button    type="submit">Go</button>
 </form>

@@ -1,0 +1,87 @@
+
+<div class="buttons-container">
+  <button (click)="selectTab('forms')" [class.active]="selectedTab === 'forms'"  class="details-button">Forms</button>
+  <button (click)="selectTab('detail')" [class.active]="selectedTab === 'detail'" class="details-button">Detail</button>
+  <button (click)="selectTab('abilities')" [class.active]="selectedTab === 'abilities'" class="details-button">Abilities</button>
+  <button (click)="selectTab('stats')" [class.active]="selectedTab === 'stats'" class="details-button">Stats</button>
+</div>
+
+<div class="tab-content">
+
+
+  @if (selectedTab === 'forms' && data) {
+    
+    <div class="stats-container">
+        
+        
+        <div class="evolution-container">
+                @for (evo of evolution; track evo.name) {
+                       
+                        <div (click)="goToPokemon(evo.id)" class="evolution-item"> 
+                          <div class="selected-evolution">
+                          @if (data.name == evo.name) {
+                               <span class="material-symbols-outlined">
+                                arrow_drop_down
+                                </span>
+                            }
+                          </div>
+                          <div>
+                            <img class="pokemon-image color-image-{{data.types[0].type.name}}" [src]="evo.image">
+                          </div>
+                            
+                        </div>   
+                    }
+        </div>
+       
+        <div class="evolution-description">
+            <div class="evolution-title"><h3> {{data.name | titlecase}}</h3> </div>
+           
+           <p>{{description}}</p>
+        
+        </div>
+        
+
+    </div>
+
+    
+    
+  }
+
+  @if (selectedTab === 'detail' && data) {
+    <div class="stats-container">
+        
+        <p> <strong>Height: </strong>   {{data.height}}</p>
+        <p>  <strong>Weight: </strong> {{data.weight}}</p>
+        <div>
+            <p><strong>Types:</strong></p>
+            @for (item of data.types; track data.types[0].type.name) {
+                <p>{{item.type.name}} </p>
+            }
+        </div>
+
+        <div>
+            <p><strong>Description: </strong> {{description}}</p>
+           
+        </div>
+        
+    </div>
+  }
+
+  @if (selectedTab === 'abilities' && data) {
+   <div class="stats-container">
+        <p>Abilities:</p>
+        @for (item of data.abilities; track data.abilities[0].ability.name) {
+            <p>{{item.ability.name}} </p>
+        }
+    </div>
+  }
+
+   @if (selectedTab === 'stats' && data) {
+    <div class="stats-container">
+        <p>Height:  {{data.height}}</p>
+
+    </div>
+  }
+ 
+</div>
+

@@ -1,12 +1,32 @@
- $grass: #78C850;
+//investigando se puede crear un diccionario en saas 
+$pokemon-types: (
+  fire: #f87171,    
+  water: #60a5fa,   
+  grass: #47e7ac,   
+  bug: #A8B820,
+  normal: #A8A878,
+  electric: #facc15, 
+  poison: #A040A0,
+  psychic: #f472b6, 
+  rock: #a1a1aa,    
+  ghost: #6366f1,   
+  dragon: #9333ea,  
+  dark: #111827,    
+  steel: #9ca3af,   
+  fairy: #f9a8d4,   
+  flying: #A890F0,
+  ground: #a87f50,
+);
+$default-color: #b3b6bc; // gris por defecto
 
 
 .pokemon-container{
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    h3{
+    h2{
        color: rgb(94, 83, 137);
+       margin: 5px 0;
     }
     cursor: pointer;
 }
@@ -20,6 +40,7 @@
    width: 100%;
    max-width: 550px; /* más grande */
    padding: 15px;
+   object-fit: cover; /* para que la imagen no se deforme */
 }
 
 .pokemon-image{
@@ -30,12 +51,38 @@
     display: flex;
     justify-content: space-between;
     padding-top: 4px;
+
+    span{
+        font-weight: lighter;
+        color: rgb(94, 83, 137);
+        font-size: small;
+    }
+}
+
+.type-item{
+  border-radius: 2px;
+    margin-left: 5px;
+    text-align: center;
+    min-width: 50px;
+    /* Asegura que todos los elementos tengan el mismo ancho */
 }
 
 .pokemon-type p{
     padding: 3px;
-    border-radius: 5px;
+    border-radius: 2px;
     color: aliceblue;
     font-size: smaller;
     margin-bottom: 2px;
+}
+
+
+@each $name, $color in $pokemon-types {
+  .color-text-#{$name} {
+    background-color: $color;
+  }
+  
+  .color-image-#{$name}{
+    background-color: lighten($color, 15%);
+  }
+
 }

@@ -1,16 +1,23 @@
 <div class="pokemon-container"  (click)="goToDetail(id)"   > 
-    <div class="pokemon-image"   [ngStyle]="{'background-color': getTypeOfColorImage()}"> <img src= 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id}}.png' alt=""></div>
+    
+    @if(data){
+            <app-get-image [data]="data" [id]="id"></app-get-image>       
+    }   
     
     <div class="pokemon-text"> 
         <div>
             
             <span>No.{{id}}</span>
          
-         @if(data) {<h3 >{{data.name | titlecase}}</h3>}   
+         @if(data) {<h2 >{{data.name | titlecase}}</h2>}   
         </div>
         <div class="pokemon-type">
-            <p  *ngFor="let t of data?.types " [ngStyle]="{'background-color': getColorType(t.type.name)}" >{{ t.type.name | titlecase }} </p>
-            
+            @for (t of data?.types; track t.type.name) {
+                <div class="type-item color-text-{{t.type.name}}">
+                    <p>{{ t.type.name | titlecase }}</p>     
+                </div>
+                    
+            }
         </div>   
     </div>
 </div>

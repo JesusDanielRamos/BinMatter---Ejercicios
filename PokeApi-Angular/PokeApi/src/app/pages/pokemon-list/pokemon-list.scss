@@ -4,11 +4,15 @@
 .Principal-Title{
     text-align: center;
     margin: 0 auto;
-    width: 35%;
+    width: 50%;
     padding-top: 5%;
     h1{
         color: rgb(94, 83, 137);
     }   
+}
+
+.search-bar{
+    padding: 40px 0;
 }
 
 .pokemons-container{
@@ -17,6 +21,7 @@
 }
 
 .pokemon-cards{
+    background-color: rgb(244, 247, 253);
     display: grid;
   /*deja que quepan más columnas */
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
